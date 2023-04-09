@@ -16,15 +16,23 @@ public class ConsoleInputReader {
     }
 
     public int readInt() {
-        LOGGER.info("Enter an integer: ");
+        LOGGER.info("Enter a positive integer: ");
 
         while(true) {
             try {
                 int number = scanner.nextInt();
                 scanner.nextLine();
-                return number;
+
+                if (number <= 0) {
+                    LOGGER.error("Invalid input, please enter a non-zero integer.");
+                } else {
+                    return number;
+                }
             } catch (InputMismatchException e) {
                 LOGGER.error("Invalid input, please enter an integer.");
+                scanner.nextLine();
+            } catch (Exception e) {
+                LOGGER.error("Unexpected error occurred. Please try again.");
                 scanner.nextLine();
             }
         }
