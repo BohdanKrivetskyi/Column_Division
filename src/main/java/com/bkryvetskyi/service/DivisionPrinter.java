@@ -1,7 +1,9 @@
 package com.bkryvetskyi.service;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
 
 public class DivisionPrinter {
@@ -18,5 +20,19 @@ public class DivisionPrinter {
         Collections.reverse(arrayDigitsInt);
 
         return arrayDigitsInt;
+    }
+
+    // Method to calculate the optimal divisor for subtraction.
+    private int calculateOptimalDivisorForSubtraction(ArrayList<Integer> dividendDigitsArray,
+                                                      int divisior,
+                                                      int digitDividend) {
+        // Set digitDividend to the first digit of the dividend.
+        Iterator<Integer> iterator = dividendDigitsArray.listIterator(digitDividend);
+        // Use an iterator to calculate the optimal divisor for subtraction.
+        while (iterator.hasNext() && digitDividend < divisior) {
+            digitDividend = digitDividend * 10 + iterator.next();
+        }
+
+        return digitDividend;
     }
 }
