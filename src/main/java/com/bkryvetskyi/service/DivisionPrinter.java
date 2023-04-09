@@ -35,4 +35,17 @@ public class DivisionPrinter {
 
         return digitDividend;
     }
+
+    // Method to find the digits for multiplication.
+    private int findDigitsForMultiplication(int digitDivident, int divisior) {
+
+        int multiplication = 0;
+        // Find the largest multiple of the divisor that is less than or equal to the digitsDividend
+        for (int k = 9; k > 0; k--) {
+            multiplication = divisior * k;
+            if (digitDivident >= multiplication) break;
+        }
+
+        return multiplication;
+    }
 }
