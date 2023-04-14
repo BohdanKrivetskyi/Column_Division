@@ -11,6 +11,6 @@ public class Application {
     private static void run() {
         ConsoleInputReader input = new ConsoleInputReader();
         DivisionPrinter divisionPrinter = new DivisionPrinter();
-        divisionPrinter.printColumnDivision(input.readInt(), input.readInt());
+        divisionPrinter.printColumnDivision(String.valueOf(input.readInt()), input.readInt());
     }
 }
