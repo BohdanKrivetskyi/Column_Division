@@ -10,6 +10,61 @@ import java.util.List;
 
 
 public class DivisionPrinter {
+    private static final Logger logger = LogManager.getLogger(DivisionPrinter.class.getName());
+    private static final String UNDERLINE = "_";
+    private static final String STRAIGHT_SLASH = "|";
+    private static final String DASH = "-";
+
+    // Method to print the division calculation columns.
+    public void printColumnDivision(String dividend, int divisior) {
+        List<Integer> result = calculateOptimalDivisorForSubtraction(dividend, divisior);
+        int size = result.size();
+
+        // Remove the first element if the size of the list is odd.
+        if (size % 2 != 0) {
+            result.remove(0);
+        }
+
+        int multiplication = result.get(0);
+        // Calculate quotient and remainder.
+        int quotient = Integer.parseInt(dividend) / divisior;
+        int remainder = Integer.parseInt(dividend) % divisior;
+
+        // Print the first row.
+        logger.info("{}{}{}{}", UNDERLINE, StringUtils.leftPad(dividend,
+                dividend.length()), STRAIGHT_SLASH, divisior);
+
+        // Print the second row.
+        logger.info("{}{}{}{}",
+                StringUtils.SPACE, multiplication, StringUtils.leftPad(STRAIGHT_SLASH,
+                        dividend.length() - String.valueOf(multiplication).length() + 1),
+                StringUtils.repeat(DASH, String.valueOf(quotient).length()));
+
+        // Print the third row.
+        logger.info("{}{}{}{}",
+                " ", StringUtils.repeat(DASH, String.valueOf(multiplication).length()),
+                StringUtils.leftPad(STRAIGHT_SLASH,
+                        dividend.length() - String.valueOf(multiplication).length() + 1), quotient);
+
+        // Print the subsequent rows.
+        for (int i = 1, j = 0; i < result.size() - 1; i++) {
+            if (result.get(i).equals(result.get(i + 1))) {
+                // Print if the elements are the same.
+                logger.info("{}{}{}", StringUtils.repeat(" ", String.valueOf(multiplication).length() + j++), UNDERLINE, result.get(i));
+                logger.info("{}{}", StringUtils.repeat(" ", String.valueOf(multiplication).length() + j), result.get(++i));
+                logger.info("{}{}", StringUtils.repeat(" ", String.valueOf(multiplication).length() + j), StringUtils.repeat(DASH, String.valueOf(result.get(i)).length()));
+                j++;
+            } else {
+                // Print if the elements are not the same.
+                logger.info("{}{}{}", StringUtils.repeat(" ", String.valueOf(multiplication).length() - 1 + j), UNDERLINE, result.get(i));
+                logger.info("{}{}", StringUtils.repeat(" ", String.valueOf(multiplication).length() + j), result.get(++i));
+                logger.info("{}{}", StringUtils.repeat(" ", String.valueOf(multiplication).length() + j), StringUtils.repeat(DASH, String.valueOf(result.get(i)).length()));
+                j++;
+            }
+        }
+        // Print the remainder.
+        logger.info("{}{}", StringUtils.leftPad("", dividend.length()), remainder);
+    }
 
 
     // Method to calculate the optimal divisor for subtraction.
