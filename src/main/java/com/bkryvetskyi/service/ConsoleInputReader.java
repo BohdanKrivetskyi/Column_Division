@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ConsoleInputReader {
+public class ConsoleInputReader implements AutoCloseable {
     private final Scanner scanner;
     private static final Logger LOGGER = LogManager.getLogger(ConsoleInputReader.class);
 
@@ -21,7 +21,6 @@ public class ConsoleInputReader {
         while(true) {
             try {
                 int number = scanner.nextInt();
-                scanner.nextLine();
 
                 if (number <= 0) {
                     LOGGER.error("Invalid input, please enter a non-zero integer.");
@@ -36,5 +35,9 @@ public class ConsoleInputReader {
                 scanner.nextLine();
             }
         }
+    }
+    @Override
+    public void close() {
+        scanner.close();
     }
 }
