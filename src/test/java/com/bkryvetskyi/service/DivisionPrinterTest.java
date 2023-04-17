@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DivisionPrinterTest {
     @Test
-    void testPrintColumnDivision() {
+    void PrintColumnDivision() {
         DivisionPrinter divisionPrinter = new DivisionPrinter();
         divisionPrinter.printColumnDivision("48945", 4);
 
@@ -33,7 +33,7 @@ class DivisionPrinterTest {
     }
 
     @Test
-    void testCalculateOptimalDivisorForSubtraction() {
+    void CalculateOptimalDivisorForSubtraction() {
         DivisionPrinter divisionPrinter = new DivisionPrinter();
         List<Integer> result = divisionPrinter.calculateOptimalDivisorForSubtraction("123456", 12);
         List<Integer> expected = Arrays.asList(12, 34, 24, 105, 96, 96, 96, 0);
@@ -41,7 +41,7 @@ class DivisionPrinterTest {
     }
 
     @Test
-    void testFindDigitsForMultiplication() {
+    void FindDigitsForMultiplication() {
         DivisionPrinter divisionPrinter = new DivisionPrinter();
         int result = divisionPrinter.findDigitsForMultiplication(48, 5);
         assertEquals(45, result);
