@@ -1,6 +1,5 @@
 package com.bkryvetskyi.service;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -9,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ConsoleInputReaderTest {
     @Test
-    void ReadIntValidInput() {
+    void readIntValidInput() {
         // Arrange
         String input = "123\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -23,7 +22,7 @@ class ConsoleInputReaderTest {
     }
 
     @Test
-    void ReadIntInputNegativeNumber() {
+    void readIntInputNegativeNumber() {
         // Arrange
         String input = "-5\n10\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -37,7 +36,7 @@ class ConsoleInputReaderTest {
     }
 
     @Test
-    void ReadIntInvalidInputNonInteger() {
+    void readIntInvalidInputNonInteger() {
         // Arrange
         String input = "abc\n15\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -51,7 +50,7 @@ class ConsoleInputReaderTest {
     }
 
     @Test
-    void ReadIntInvalidInputEmptyInput() {
+    void readIntInvalidInputEmptyInput() {
         // Arrange
         String input = "\n25\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -65,7 +64,7 @@ class ConsoleInputReaderTest {
     }
 
     @Test
-    void ReadIntInvalidInputNoInteger() {
+    void readIntInvalidInputNoInteger() {
         // Arrange
         String input = "abc\n15\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -79,7 +78,7 @@ class ConsoleInputReaderTest {
     }
 
     @Test
-    void ReadIntInvalidInputGreaterThanInt() {
+    void readIntInvalidInputGreaterThanInt() {
         // Arrange
         String input = "2147483648\n10\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -93,7 +92,7 @@ class ConsoleInputReaderTest {
     }
 
     @Test
-    void ReadIntInvalidInputNegativeGreaterThanInt() {
+    void readIntInvalidInputNegativeGreaterThanInt() {
         // Arrange
         String input = "-2147483649\n10\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
