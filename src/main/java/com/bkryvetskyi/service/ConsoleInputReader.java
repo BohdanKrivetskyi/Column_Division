@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class ConsoleInputReader implements AutoCloseable {
     private final Scanner scanner;
     private static final Logger LOGGER = LogManager.getLogger(ConsoleInputReader.class);
+    private static final int MAX_INT_VALUE = Integer.MAX_VALUE;
 
     public ConsoleInputReader() {
         this.scanner = new Scanner(System.in);
@@ -24,6 +25,8 @@ public class ConsoleInputReader implements AutoCloseable {
 
                 if (number <= 0) {
                     LOGGER.error("Invalid input, please enter a non-zero integer.");
+                } else if (number > MAX_INT_VALUE) {
+                    LOGGER.error("Invalid input, please enter a positive integer not exceeding " + MAX_INT_VALUE);
                 } else {
                     return number;
                 }
