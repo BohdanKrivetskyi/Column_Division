@@ -80,7 +80,7 @@ class ConsoleInputReaderTest {
     @Test
     void readIntInvalidInputGreaterThanInt() {
         // Arrange
-        String input = "2147483648\n10\n";
+        String input = "2147483649\n10\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         ConsoleInputReader reader = new ConsoleInputReader();
 
